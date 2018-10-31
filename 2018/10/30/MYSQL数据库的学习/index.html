@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MYSQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="小凡的个人博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="什么是数据库数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。关系型数据的特点：  数据以表格的形式出现。 每行行各种记录的名称。 每列为记录名称所对象的数据域。 许多行和列组成一张表单。 若干的表单组成DATABASE。  MYSQL的安装详情请参照该网站配置。">
+<meta name="keywords" content="MYSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MYSQL数据库的学习">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/MYSQL数据库的学习/index.html">
+<meta property="og:site_name" content="小凡的个人博客">
+<meta property="og:description" content="什么是数据库数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。关系型数据的特点：  数据以表格的形式出现。 每行行各种记录的名称。 每列为记录名称所对象的数据域。 许多行和列组成一张表单。 若干的表单组成DATABASE。  MYSQL的安装详情请参照该网站配置。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg">
+<meta property="og:updated_time" content="2018-10-31T01:05:32.588Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MYSQL数据库的学习">
+<meta name="twitter:description" content="什么是数据库数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。关系型数据的特点：  数据以表格的形式出现。 每行行各种记录的名称。 每列为记录名称所对象的数据域。 许多行和列组成一张表单。 若干的表单组成DATABASE。  MYSQL的安装详情请参照该网站配置。">
+<meta name="twitter:image" content="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/MYSQL数据库的学习/">
+
+
+
+
+
+  <title>MYSQL数据库的学习 | 小凡的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小凡的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录学习的技能和遇到的问题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/MYSQL数据库的学习/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="小凡的耿">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小凡的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MYSQL数据库的学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T12:17:12+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/MYSQL-数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">MYSQL 数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg" rel="gallery_cjnwgmcy60000n0s1d8rrfaie" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h2 id="什么是数据库"><a href="#什么是数据库" class="headerlink" title="什么是数据库"></a>什么是数据库</h2><p>数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。<br>关系型数据的特点：</p>
+<ol>
+<li>数据以表格的形式出现。</li>
+<li>每行行各种记录的名称。</li>
+<li>每列为记录名称所对象的数据域。</li>
+<li>许多行和列组成一张表单。</li>
+<li>若干的表单组成DATABASE。</li>
+</ol>
+<h2 id="MYSQL的安装"><a href="#MYSQL的安装" class="headerlink" title="MYSQL的安装"></a>MYSQL的安装</h2><p>详情请参照<a href="http://www.runoob.com/mysql/mysql-install.html" target="_blank" rel="noopener">该网站</a>配置。<br><a id="more"></a></p>
+<h2 id="MYSQL的相关操作"><a href="#MYSQL的相关操作" class="headerlink" title="MYSQL的相关操作"></a>MYSQL的相关操作</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p><code>CREATE DATABASE 数据库名</code><br>例如：<code>CREATE DATABASE scholl</code>，创建一个名为<strong>scholl</strong>的数据库。<br>然后<code>use 数据库名</code>就使用该数据库了。</p>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p><code>DROP DATABASE 数据库名</code><br>例如：<code>DROP DATABASE scholl</code>，删除名为<strong>scholl</strong>的数据库。</p>
+<h3 id="MYSQL的数据类型"><a href="#MYSQL的数据类型" class="headerlink" title="MYSQL的数据类型"></a>MYSQL的数据类型</h3><p>MYSQL支持多种类型，大致可以分为三类：数值、日期和字符串。</p>
+<h4 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h4><p>这些类型包括严格数值数据类型(INTEGER、SMALLINT、DECIMAL和NUMERIC)，以及近似数值数据类型(FLOAT、REAL和DOUBLE PRECISION)。<br><img src="http://phed7ux2i.bkt.clouddn.com/MySQL%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B.png" alt=""></p>
+<h4 id="日期和时间类型"><a href="#日期和时间类型" class="headerlink" title="日期和时间类型"></a>日期和时间类型</h4><p>表示时间值的日期和时间类型为DATETIME、DATE、TIMESTAMP、TIME和YEAR。<br><img src="http://phed7ux2i.bkt.clouddn.com/MySQL%E6%97%A5%E6%9C%9F.png" alt=""></p>
+<h4 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h4><p>字符串类型指CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET。<br><img src="http://phed7ux2i.bkt.clouddn.com/MySQL%E5%AD%97%E7%AC%A6%E4%B8%B2.png" alt=""></p>
+<h4 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h4><p>创建MySQL数据表需要以下信息</p>
+<ul>
+<li>表名</li>
+<li>表字段名</li>
+<li>定义每个表字段<br><code>CREATE TABLE 表名 (字段名 字段类型)</code><br>例如：<code>CREATE TABLE class (
+name VARCHAR,
+id INT
+)</code><h4 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h4><code>DROP TABLE 表名</code><br>例如：<code>DROP TABLE class</code>删除一个名为<strong>class</strong>的数据表</li>
+</ul>
+<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>MySQL表中使用<strong>INSERT INTO</strong>语句来插入数据。<br><code>INSERT INTO 表名 VALUES （）</code></p>
+<ol>
+<li>单行插入<br><code>INSERT INTO 表名 VALUES ()</code></li>
+<li>多行插入<br><code>INSERT INTO 表名 VALUES (),()</code></li>
+</ol>
+<h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><p>MySQL表中使用<strong>UPDATE 表名 SET 数据名称=新值 [WHERE 条件判断]</strong><br><code>UPDATE class SET grade=60 WHERE name=&quot;小凡&quot;</code></p>
+<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>MySQL表中使用<strong>DELETE FROM 表名 [WHERE 条件]</strong><br><code>DELETE FROM class WHERE grade&lt;60</code></p>
+<p>一个例子：<br> 向学生表插入4行数据<br>INSERT INTO score (sname,snum,cname,grade) values(“王五”,3,”英语”,59.5),(“赵六”,4,”语文”,99.5),(“田七”,5,”数学”,7),(“王八”,6,”思想品德”,3);<br>– 2. 将所有不及格 的成绩在原来基础之上加5分<br>– 3.将王五的成绩降到40<br>– 4.删除表低于30分的成绩<br>– 5.两种方式删除表中所有数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE school;</span><br><span class="line">use scholl;</span><br><span class="line"></span><br><span class="line">CREATE TABLE score (</span><br><span class="line">  sname VARCHAR(4),</span><br><span class="line">  snum TINYINT,</span><br><span class="line">  cname VARCHAR(4),</span><br><span class="line">  grade float</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSERT INTO score (sname,snum,cname,grade) VALUES (&quot;王五&quot;,3,&quot;英语&quot;,59.5),(&quot;赵六&quot;,4,&quot;语文&quot;,99.5),(&quot;田七&quot;,5,&quot;数学&quot;,7),(&quot;王八&quot;,6,&quot;思想品德&quot;,3);</span><br><span class="line"></span><br><span class="line">UPDATE score SET grade = grade + 5 WHERES grade &lt; 60;</span><br><span class="line"></span><br><span class="line">UPDATE score SET grade = 40 WHERE sname = &quot;王五&quot;;</span><br><span class="line"></span><br><span class="line">DELETE FEOM score WHERE grade &lt; 30;</span><br><span class="line"></span><br><span class="line">DORP TABLE score  //删除表全部数据和表结构</span><br><span class="line">TRUNCATE TAVLE score  //删除表全部数据，保留表结构</span><br><span class="line">DELETE FROM score //删除表全部数据，表结构不变</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h2><p>数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ol>
+<li>实体完整性</li>
+<li>域完整性</li>
+<li>参照完整性</li>
+<li>自定义完整性</li>
+</ol>
+<h3 id="主键-PRIMARY-KEY"><a href="#主键-PRIMARY-KEY" class="headerlink" title="主键(PRIMARY KEY)"></a>主键(PRIMARY KEY)</h3><p>定义：表中有一列或几列的值能用来唯一的表示表中的每一行。</p>
+<p>两种方式添加主键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(4),</span><br><span class="line">  snum INT PRIMARY KEY,</span><br><span class="line">  sage TINYINT</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line">ALTER TABLE class ADD PRIMARY KEY(snum)</span><br></pre></td></tr></table></figure></p>
+<p>删除主键<br><code>ALTER TABLE class DROP PRIMARY KEY</code></p>
+<h3 id="外键-FOREIGN-KEY"><a href="#外键-FOREIGN-KEY" class="headerlink" title="外键(FOREIGN KEY)"></a>外键(FOREIGN KEY)</h3><p>定义：<strong>字表</strong>对应于<strong>主表</strong>的列，体现了引用完整性、列完整性。主键唯一，外键多个。<br>添加外键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class2 (</span><br><span class="line">  sname VARCHAR(4),</span><br><span class="line">  snum INT,</span><br><span class="line">  sage TINYINT,</span><br><span class="line">  PRIMARY KEY (snum),</span><br><span class="line">  FOREIGN KEY (sname) REFERENCES student(class1)</span><br><span class="line">)</span><br><span class="line">ALTER TABLE class2 ADD FOREIGN KEY (sname) REFERENCES student(class1)</span><br></pre></td></tr></table></figure></p>
+<p>删除外键<br><code>ALTER TABLE class2 DROP FOREIGN KEY (sname)</code></p>
+<h3 id="自增长-AUTO-INCREMENT"><a href="#自增长-AUTO-INCREMENT" class="headerlink" title="自增长(AUTO_INCREMENT)"></a>自增长(AUTO_INCREMENT)</h3><p>体现了实体的完整性，常搭配主键一起使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(8),</span><br><span class="line">  snum PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">  sage TINYINT,</span><br><span class="line">  ssex VARCHAR(2)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="唯一约束-unique"><a href="#唯一约束-unique" class="headerlink" title="唯一约束(unique)"></a>唯一约束(unique)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(8),</span><br><span class="line">  snum PRIMARY KEY UNIQUE,</span><br><span class="line">  sage TINYINT,</span><br><span class="line">  ssex VARCHAR(2)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="非空约束-NOT-NULL"><a href="#非空约束-NOT-NULL" class="headerlink" title="非空约束(NOT NULL)"></a>非空约束(NOT NULL)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(8),</span><br><span class="line">  snum PRIMARY KEY NOT NULL,</span><br><span class="line">  sage TINYINT,</span><br><span class="line">  ssex VARCHAR(2)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="检查约束-SET-类型"><a href="#检查约束-SET-类型" class="headerlink" title="检查约束(SET(类型))"></a>检查约束(SET(类型))</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(8),</span><br><span class="line">  snum PRIMARY KEY,</span><br><span class="line">  sage TINYINT,</span><br><span class="line">  ssex VARCHAR(2) SET(&quot;男&quot;, &quot;女&quot;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="默认值约束-default"><a href="#默认值约束-default" class="headerlink" title="默认值约束(default)"></a>默认值约束(default)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE class (</span><br><span class="line">  sname VARCHAR(8),</span><br><span class="line">  snum PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">  sage TINYINT DEFAULTE &quot;18&quot;,</span><br><span class="line">  ssex VARCHAR(2)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h2 id="三大范式"><a href="#三大范式" class="headerlink" title="三大范式"></a>三大范式</h2><ol>
+<li>确保每列都保持原子性</li>
+<li>确保每行都具有唯一性(拥有主键)</li>
+<li>确保每列都和主键直接相关，而不是间接相关。</li>
+</ol>
+<p>一个实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">-- CREATE DATABASE admin;</span><br><span class="line">-- USE admin;</span><br><span class="line"></span><br><span class="line">CREATE TABLE user_info (</span><br><span class="line">	user_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	user_nickname VARCHAR(10) UNIQUE,</span><br><span class="line">	user_iphone	VARCHAR(11)	UNIQUE NOT NULL,</span><br><span class="line">	user_email	VARCHAR(40)	UNIQUE NOT NULL,</span><br><span class="line">	user_sex	VARCHAR(8)	NOT NULL,</span><br><span class="line">	user_age	TINYINT NOT NULL,</span><br><span class="line">	user_address	VARCHAR(40) NOT NULL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE user_login_table (</span><br><span class="line">	user_login_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	user_login_userId VARCHAR(20) UNIQUE NOT NULL,</span><br><span class="line">	user_login_username	VARCHAR(20)	UNIQUE NOT NULL,</span><br><span class="line">	user_login_password	VARCHAR(20)	NOT NULL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE product_table (</span><br><span class="line">	product_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	product_name VARCHAR(20) NOT NULL,</span><br><span class="line">	product_num	INT	 NOT NULL,</span><br><span class="line">	product_price	FLOAT	NOT NULL,</span><br><span class="line">	product_description	VARCHAR(100),</span><br><span class="line">	product_createDate	DATE	NOT NULL,</span><br><span class="line">	product_date	DATE</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE shoppingcar(</span><br><span class="line">	shoppingcar_id	INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	shoppingcar_product_name	VARCHAR(20),</span><br><span class="line">	shoppingcar_num	INT,</span><br><span class="line">	shoppingcar_userId	INT,</span><br><span class="line">	FOREIGN KEY(shoppingcar_userId) REFERENCES user_info(user_id)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE hadShopping(</span><br><span class="line">	hadShopping_shoppingcar_id	INT,</span><br><span class="line">	hadShopping_buyTine	DATE,</span><br><span class="line">	hadShopping_address	VARCHAR(40),</span><br><span class="line">-- 	FOREIGN KEY(shoppingcar_userId) REFERENCES user_info(user_id)</span><br><span class="line">	FOREIGN KEY(hadShopping_shoppingcar_id) REFERENCES product_table(product_id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MYSQL/" rel="tag"># MYSQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/25/mongoDB的使用/" rel="next" title="mongoDB的使用">
+                <i class="fa fa-chevron-left"></i> mongoDB的使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/java学习/" rel="prev" title="java学习">
+                java学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/1.jpg" alt="小凡的耿">
+            
+              <p class="site-author-name" itemprop="name">小凡的耿</p>
+              <p class="site-description motion-element" itemprop="description">stay foolish，stay hunger！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据库"><span class="nav-number">1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的安装"><span class="nav-number">2.</span> <span class="nav-text">MYSQL的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的相关操作"><span class="nav-number">3.</span> <span class="nav-text">MYSQL的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">3.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL的数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">MYSQL的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值类型"><span class="nav-number">3.3.1.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期和时间类型"><span class="nav-number">3.3.2.</span> <span class="nav-text">日期和时间类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串类型"><span class="nav-number">3.3.3.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表"><span class="nav-number">3.3.4.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据表"><span class="nav-number">3.3.5.</span> <span class="nav-text">删除数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入数据"><span class="nav-number">3.3.6.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新数据"><span class="nav-number">3.3.7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据"><span class="nav-number">3.3.8.</span> <span class="nav-text">删除数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据完整性"><span class="nav-number">4.</span> <span class="nav-text">数据完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">4.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键-PRIMARY-KEY"><span class="nav-number">4.2.</span> <span class="nav-text">主键(PRIMARY KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键-FOREIGN-KEY"><span class="nav-number">4.3.</span> <span class="nav-text">外键(FOREIGN KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增长-AUTO-INCREMENT"><span class="nav-number">4.4.</span> <span class="nav-text">自增长(AUTO_INCREMENT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一约束-unique"><span class="nav-number">4.5.</span> <span class="nav-text">唯一约束(unique)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非空约束-NOT-NULL"><span class="nav-number">4.6.</span> <span class="nav-text">非空约束(NOT NULL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查约束-SET-类型"><span class="nav-number">4.7.</span> <span class="nav-text">检查约束(SET(类型))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值约束-default"><span class="nav-number">4.8.</span> <span class="nav-text">默认值约束(default)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三大范式"><span class="nav-number">5.</span> <span class="nav-text">三大范式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小凡的耿</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
