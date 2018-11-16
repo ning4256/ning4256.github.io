@@ -90,7 +90,7 @@
 <meta property="og:description" content="什么是数据库数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。关系型数据的特点：  数据以表格的形式出现。 每行行各种记录的名称。 每列为记录名称所对象的数据域。 许多行和列组成一张表单。 若干的表单组成DATABASE。  MYSQL的安装详情请参照该网站配置。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg">
-<meta property="og:updated_time" content="2018-10-31T01:05:32.588Z">
+<meta property="og:updated_time" content="2018-11-03T06:54:43.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MYSQL数据库的学习">
 <meta name="twitter:description" content="什么是数据库数据库（DATABASE）是按照数据结构来组织、存储、和管理数据的仓库。关系型数据的特点：  数据以表格的形式出现。 每行行各种记录的名称。 每列为记录名称所对象的数据域。 许多行和列组成一张表单。 若干的表单组成DATABASE。  MYSQL的安装详情请参照该网站配置。">
@@ -368,7 +368,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg" rel="gallery_cjnwgntt00000hks17myv3ncj" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg" rel="gallery_cjoihsui00000ogs1c2v8x9yz" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://phedcy52v.bkt.clouddn.com/top-iamge1.jpg" itemprop="contentUrl">
               </a>
             
@@ -402,7 +402,7 @@
 <li>定义每个表字段<br><code>CREATE TABLE 表名 (字段名 字段类型)</code><br>例如：<code>CREATE TABLE class (
 name VARCHAR,
 id INT
-)</code><h4 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h4><code>DROP TABLE 表名</code><br>例如：<code>DROP TABLE class</code>删除一个名为<strong>class</strong>的数据表</li>
+)</code><h4 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h4><code>DROP TABLE 表名</code><br>例如：<code>DROP TABLE class</code>删除一个名为<strong>class</strong>的数据表<br><code>TRUNCATE TABLE 表名</code>删除表内所有数据，保留表结构。<br><code>DELETE FROM 表名 WHERE 条件</code>删除表内的数据，或者删除某一列。</li>
 </ul>
 <h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>MySQL表中使用<strong>INSERT INTO</strong>语句来插入数据。<br><code>INSERT INTO 表名 VALUES （）</code></p>
 <ol>
@@ -411,6 +411,7 @@ id INT
 </ol>
 <h4 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h4><p>MySQL表中使用<strong>UPDATE 表名 SET 数据名称=新值 [WHERE 条件判断]</strong><br><code>UPDATE class SET grade=60 WHERE name=&quot;小凡&quot;</code></p>
 <h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><p>MySQL表中使用<strong>DELETE FROM 表名 [WHERE 条件]</strong><br><code>DELETE FROM class WHERE grade&lt;60</code></p>
+<h4 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h4><p><code>alter table 表名 rename  新表名</code><br><code>alter table 表名 add 新列名 新列的定义</code><br><code>alter table 表名 change 旧列名 新列名 新列的定义</code></p>
 <p>一个例子：<br> 向学生表插入4行数据<br>INSERT INTO score (sname,snum,cname,grade) values(“王五”,3,”英语”,59.5),(“赵六”,4,”语文”,99.5),(“田七”,5,”数学”,7),(“王八”,6,”思想品德”,3);<br>– 2. 将所有不及格 的成绩在原来基础之上加5分<br>– 3.将王五的成绩降到40<br>– 4.删除表低于30分的成绩<br>– 5.两种方式删除表中所有数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE school;</span><br><span class="line">use scholl;</span><br><span class="line"></span><br><span class="line">CREATE TABLE score (</span><br><span class="line">  sname VARCHAR(4),</span><br><span class="line">  snum TINYINT,</span><br><span class="line">  cname VARCHAR(4),</span><br><span class="line">  grade float</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">INSERT INTO score (sname,snum,cname,grade) VALUES (&quot;王五&quot;,3,&quot;英语&quot;,59.5),(&quot;赵六&quot;,4,&quot;语文&quot;,99.5),(&quot;田七&quot;,5,&quot;数学&quot;,7),(&quot;王八&quot;,6,&quot;思想品德&quot;,3);</span><br><span class="line"></span><br><span class="line">UPDATE score SET grade = grade + 5 WHERES grade &lt; 60;</span><br><span class="line"></span><br><span class="line">UPDATE score SET grade = 40 WHERE sname = &quot;王五&quot;;</span><br><span class="line"></span><br><span class="line">DELETE FEOM score WHERE grade &lt; 30;</span><br><span class="line"></span><br><span class="line">DORP TABLE score  //删除表全部数据和表结构</span><br><span class="line">TRUNCATE TAVLE score  //删除表全部数据，保留表结构</span><br><span class="line">DELETE FROM score //删除表全部数据，表结构不变</span><br></pre></td></tr></table></figure></p>
 <h2 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h2><p>数据库完整性（Database Integrity）是指数据库中数据在逻辑上的一致性、正确性、有效性和相容性。</p>
 <h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ol>
@@ -435,7 +436,69 @@ id INT
 <li>确保每列都和主键直接相关，而不是间接相关。</li>
 </ol>
 <p>一个实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">-- CREATE DATABASE admin;</span><br><span class="line">-- USE admin;</span><br><span class="line"></span><br><span class="line">CREATE TABLE user_info (</span><br><span class="line">	user_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	user_nickname VARCHAR(10) UNIQUE,</span><br><span class="line">	user_iphone	VARCHAR(11)	UNIQUE NOT NULL,</span><br><span class="line">	user_email	VARCHAR(40)	UNIQUE NOT NULL,</span><br><span class="line">	user_sex	VARCHAR(8)	NOT NULL,</span><br><span class="line">	user_age	TINYINT NOT NULL,</span><br><span class="line">	user_address	VARCHAR(40) NOT NULL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE user_login_table (</span><br><span class="line">	user_login_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	user_login_userId VARCHAR(20) UNIQUE NOT NULL,</span><br><span class="line">	user_login_username	VARCHAR(20)	UNIQUE NOT NULL,</span><br><span class="line">	user_login_password	VARCHAR(20)	NOT NULL</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE product_table (</span><br><span class="line">	product_id INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	product_name VARCHAR(20) NOT NULL,</span><br><span class="line">	product_num	INT	 NOT NULL,</span><br><span class="line">	product_price	FLOAT	NOT NULL,</span><br><span class="line">	product_description	VARCHAR(100),</span><br><span class="line">	product_createDate	DATE	NOT NULL,</span><br><span class="line">	product_date	DATE</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE shoppingcar(</span><br><span class="line">	shoppingcar_id	INT PRIMARY KEY NOT NULL UNIQUE AUTO_INCREMENT,</span><br><span class="line">	shoppingcar_product_name	VARCHAR(20),</span><br><span class="line">	shoppingcar_num	INT,</span><br><span class="line">	shoppingcar_userId	INT,</span><br><span class="line">	FOREIGN KEY(shoppingcar_userId) REFERENCES user_info(user_id)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">CREATE TABLE hadShopping(</span><br><span class="line">	hadShopping_shoppingcar_id	INT,</span><br><span class="line">	hadShopping_buyTine	DATE,</span><br><span class="line">	hadShopping_address	VARCHAR(40),</span><br><span class="line">-- 	FOREIGN KEY(shoppingcar_userId) REFERENCES user_info(user_id)</span><br><span class="line">	FOREIGN KEY(hadShopping_shoppingcar_id) REFERENCES product_table(product_id)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="DQL-数据查询语言"><a href="#DQL-数据查询语言" class="headerlink" title="DQL(数据查询语言)"></a>DQL(数据查询语言)</h2><ol>
+<li>简单查询</li>
+<li>复杂查询<blockquote>
+<ol>
+<li>聚合函数与分组</li>
+<li>子查询</li>
+<li>链接查询</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h3 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h3><p><code>SELECT 列名  FROM 表名 [WHERE 条件] [ORDER BY 列名]</code></p>
+<ol>
+<li>查询所有信息<br><code>SELECT * FROM student</code></li>
+<li>按条件查询<br><code>SELECT * FROM student Where sex=&quot;nv&quot; ORDER BY age;</code></li>
+<li>重命名AS<br><code>SELECT id AS 学生编号  FROM student</code></li>
+<li>合并列作为一个新列<br><code>SELECT 工资＋奖金 AS 收入</code></li>
+<li>限制行数（limit）<br><code>SELECT 列名 FROM 表名 WHERE age=10 LIMIT 起始行，行数;</code></li>
+<li>不重复查询<br><code>SELECT DISTINCT  列名  FROM  表名</code></li>
+<li>模糊查询<br><code>SELECT * FROM 表名 WHERE sname like &quot;c_&quot;;</code></li>
+</ol>
+<h3 id="复杂查询"><a href="#复杂查询" class="headerlink" title="复杂查询"></a>复杂查询</h3><h4 id="聚合函数与分组"><a href="#聚合函数与分组" class="headerlink" title="聚合函数与分组"></a>聚合函数与分组</h4><p>需求：查询数据表中的最高成绩，最低成绩，平均成绩，总成绩，成绩记录个数<br><code>COUNT, SUM, AVG, MAX, MIN</code>(行数， 总和， 平均， 最大， 最小)<br>使用方法：</p>
+<ol>
+<li><code>select count(列名) from 表名</code></li>
+<li><code>select sum(列名) from 表名</code></li>
+<li><code>select avg(列名) from 表名</code></li>
+<li><code>select max(列名) from 表名</code></li>
+<li><code>select mix(列名) from 表名</code><br>需求：查询每个同学的平均成绩。<br><code>select sname,sum(grade) from 表名 GROUND BY  courseId</code></li>
+</ol>
+<h4 id="多列分组"><a href="#多列分组" class="headerlink" title="多列分组"></a>多列分组</h4><p><code>select 列名 from 表名 GROUND BY 分组条件 HAVING 聚合条件s</code></p>
+<h4 id="查询顺序"><a href="#查询顺序" class="headerlink" title="查询顺序"></a>查询顺序</h4><p><code>SELECT * FROM  表名  where 条件  GROUP BY  分组  HAVING 聚合函数过滤  ORDER BY   LIMIT</code></p>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><p>定义：可以解决需要结合多张表进行查询的需求。<br>分类：</p>
+<ol>
+<li><p>查询语句作为另一条查询语句的一个条件的值。<br>需求：查询平均成绩大于60的学生姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select sname from student; //从student表中查询sname</span><br><span class="line">select sno from sc groud by sno having avg(score)&gt;60; //</span><br><span class="line">select sname from student where sno in (select sno from sc groud by sno having avg(score)&gt;60);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询语句作为另一条查询语句的一张表。<br>一般解题步骤：先找到核心需求，确定最终要查的表，将每个条件用单独的一条<code>select</code>语句表示出来，将所写出的语句通过表之间的外键联系起来。</p>
+</li>
+</ol>
+<h3 id="视图查询"><a href="#视图查询" class="headerlink" title="视图查询"></a>视图查询</h3><p>保存查询语句集的展示形式，保存结果集的表</p>
+<p><code>create view view_student_sc as</code></p>
+<h3 id="链接查询"><a href="#链接查询" class="headerlink" title="链接查询"></a>链接查询</h3><p>结合多张表完成更复杂的查询需求<br>分类：</p>
+<ol>
+<li>内连接(INNER JOIN)<br><code>select sno,sname from student</code><br><code>select sno from sc groud by sno having avg(score) between 60 and 80</code><br><code>select sno,sname from student where sno in (select sno from sc groud by sno having avg(score) between 60 and 80)</code></li>
+</ol>
+<hr>
+<p><code>select * from student inner join sc on sc.sno=student.sno groud by sno having avg(score) having between 60 and 80</code></p>
+<ol start="2">
+<li>外联接（左外，右外）</li>
+</ol>
+<h2 id="高级特效-包含了DCL"><a href="#高级特效-包含了DCL" class="headerlink" title="高级特效(包含了DCL)"></a>高级特效(包含了DCL)</h2><ol>
+<li>变量</li>
+</ol>
+<p>1.1 用户变量<br><code>SET @变量名=变量值</code> // 定义变量<br><code>select @变量名</code>  //输出变量<br>1.1.1 全局变量<br><code>show global variable</code>  查看所有的全局变量<br>在 <code>my-default.ini</code>文件里面修改全局变量<br>1.2 系统变量<br>1.3 局部变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create procedure pro_if()</span><br><span class="line">begin</span><br><span class="line">declare a tinyint;</span><br><span class="line">select min(age) into a from student;</span><br><span class="line">if a&lt;18 then</span><br><span class="line">select &quot;小孩子&quot;;</span><br><span class="line">elseif a&gt;18 and a&lt;60 then</span><br><span class="line">select &quot;大孩子&quot;;</span><br><span class="line">else</span><br><span class="line">select &quot;老孩子&quot;;</span><br><span class="line">end if;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">call pro_if;</span><br></pre></td></tr></table></figure></p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><h4 id="带参数的"><a href="#带参数的" class="headerlink" title="带参数的"></a>带参数的</h4><ol>
+<li>输入的形参 和 输出的形参</li>
+</ol>
+<ol start="2">
+<li>输出的形参</li>
+</ol>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p>体现自定义完整性，构建更加合理、健壮的数据库，数据检查问题。</p>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>将多个操作视为一个整体的概念<br>特性：原子性，一致性，隔离性，持久性。</p>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3>
       
     </div>
     
@@ -556,7 +619,7 @@ id INT
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -567,7 +630,7 @@ id INT
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -578,7 +641,7 @@ id INT
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -618,7 +681,7 @@ id INT
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据库"><span class="nav-number">1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的安装"><span class="nav-number">2.</span> <span class="nav-text">MYSQL的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的相关操作"><span class="nav-number">3.</span> <span class="nav-text">MYSQL的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">3.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL的数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">MYSQL的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值类型"><span class="nav-number">3.3.1.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期和时间类型"><span class="nav-number">3.3.2.</span> <span class="nav-text">日期和时间类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串类型"><span class="nav-number">3.3.3.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表"><span class="nav-number">3.3.4.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据表"><span class="nav-number">3.3.5.</span> <span class="nav-text">删除数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入数据"><span class="nav-number">3.3.6.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新数据"><span class="nav-number">3.3.7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据"><span class="nav-number">3.3.8.</span> <span class="nav-text">删除数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据完整性"><span class="nav-number">4.</span> <span class="nav-text">数据完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">4.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键-PRIMARY-KEY"><span class="nav-number">4.2.</span> <span class="nav-text">主键(PRIMARY KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键-FOREIGN-KEY"><span class="nav-number">4.3.</span> <span class="nav-text">外键(FOREIGN KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增长-AUTO-INCREMENT"><span class="nav-number">4.4.</span> <span class="nav-text">自增长(AUTO_INCREMENT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一约束-unique"><span class="nav-number">4.5.</span> <span class="nav-text">唯一约束(unique)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非空约束-NOT-NULL"><span class="nav-number">4.6.</span> <span class="nav-text">非空约束(NOT NULL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查约束-SET-类型"><span class="nav-number">4.7.</span> <span class="nav-text">检查约束(SET(类型))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值约束-default"><span class="nav-number">4.8.</span> <span class="nav-text">默认值约束(default)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三大范式"><span class="nav-number">5.</span> <span class="nav-text">三大范式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是数据库"><span class="nav-number">1.</span> <span class="nav-text">什么是数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的安装"><span class="nav-number">2.</span> <span class="nav-text">MYSQL的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MYSQL的相关操作"><span class="nav-number">3.</span> <span class="nav-text">MYSQL的相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库"><span class="nav-number">3.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据库"><span class="nav-number">3.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MYSQL的数据类型"><span class="nav-number">3.3.</span> <span class="nav-text">MYSQL的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数值类型"><span class="nav-number">3.3.1.</span> <span class="nav-text">数值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日期和时间类型"><span class="nav-number">3.3.2.</span> <span class="nav-text">日期和时间类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串类型"><span class="nav-number">3.3.3.</span> <span class="nav-text">字符串类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表"><span class="nav-number">3.3.4.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据表"><span class="nav-number">3.3.5.</span> <span class="nav-text">删除数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插入数据"><span class="nav-number">3.3.6.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新数据"><span class="nav-number">3.3.7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据"><span class="nav-number">3.3.8.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表结构"><span class="nav-number">3.3.9.</span> <span class="nav-text">修改表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据完整性"><span class="nav-number">4.</span> <span class="nav-text">数据完整性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">4.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主键-PRIMARY-KEY"><span class="nav-number">4.2.</span> <span class="nav-text">主键(PRIMARY KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外键-FOREIGN-KEY"><span class="nav-number">4.3.</span> <span class="nav-text">外键(FOREIGN KEY)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自增长-AUTO-INCREMENT"><span class="nav-number">4.4.</span> <span class="nav-text">自增长(AUTO_INCREMENT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一约束-unique"><span class="nav-number">4.5.</span> <span class="nav-text">唯一约束(unique)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非空约束-NOT-NULL"><span class="nav-number">4.6.</span> <span class="nav-text">非空约束(NOT NULL)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查约束-SET-类型"><span class="nav-number">4.7.</span> <span class="nav-text">检查约束(SET(类型))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认值约束-default"><span class="nav-number">4.8.</span> <span class="nav-text">默认值约束(default)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三大范式"><span class="nav-number">5.</span> <span class="nav-text">三大范式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DQL-数据查询语言"><span class="nav-number">6.</span> <span class="nav-text">DQL(数据查询语言)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单查询"><span class="nav-number">6.1.</span> <span class="nav-text">简单查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂查询"><span class="nav-number">6.2.</span> <span class="nav-text">复杂查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合函数与分组"><span class="nav-number">6.2.1.</span> <span class="nav-text">聚合函数与分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多列分组"><span class="nav-number">6.2.2.</span> <span class="nav-text">多列分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询顺序"><span class="nav-number">6.2.3.</span> <span class="nav-text">查询顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">6.3.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图查询"><span class="nav-number">6.4.</span> <span class="nav-text">视图查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接查询"><span class="nav-number">6.5.</span> <span class="nav-text">链接查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级特效-包含了DCL"><span class="nav-number">7.</span> <span class="nav-text">高级特效(包含了DCL)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程"><span class="nav-number">7.1.</span> <span class="nav-text">存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#带参数的"><span class="nav-number">7.1.1.</span> <span class="nav-text">带参数的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触发器"><span class="nav-number">7.2.</span> <span class="nav-text">触发器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务"><span class="nav-number">7.3.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游标"><span class="nav-number">7.4.</span> <span class="nav-text">游标</span></a></li></ol></li></ol></div>
             
 
           </div>
