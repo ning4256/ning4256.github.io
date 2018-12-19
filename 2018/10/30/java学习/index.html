@@ -90,7 +90,7 @@
 <meta property="og:description" content="java基础语法 对象：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。 类：类是一个模板，它描述一类对象的行为和状态。 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。  第一个Java程序12345public">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg">
-<meta property="og:updated_time" content="2018-10-31T04:01:19.298Z">
+<meta property="og:updated_time" content="2018-11-21T06:12:35.017Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java学习">
 <meta name="twitter:description" content="java基础语法 对象：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。 类：类是一个模板，它描述一类对象的行为和状态。 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。  第一个Java程序12345public">
@@ -368,7 +368,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg" rel="gallery_cjoihsuid0002ogs1xtw6zxp7" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg" rel="gallery_cjojn2zs50006fws1mld6h1vn" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="http://oz2tkq0zj.bkt.clouddn.com/17-11-9/52323298.jpg" itemprop="contentUrl">
               </a>
             
@@ -387,7 +387,6 @@
 <li>实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。</li>
 </ol>
 <h3 id="第一个Java程序"><a href="#第一个Java程序" class="headerlink" title="第一个Java程序"></a>第一个Java程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld &#123;</span><br><span class="line">  public static void main(String []args)&#123;</span><br><span class="line">    System.out.println(&quot;Hello,world!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 <h2 id="对象和类"><a href="#对象和类" class="headerlink" title="对象和类"></a>对象和类</h2><p>类可以看成创建对象的模板。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public  class Dog &#123;</span><br><span class="line">  String  breed;</span><br><span class="line">  int age;</span><br><span class="line">  String  color;</span><br><span class="line">  void  barking()&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>一个类可以包含以下类型变量</p>
 <ul>
@@ -420,11 +419,18 @@
 <h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>引用类型指向一个对象，指向对象的变量是引用变量。对象，数值都是引用数据类型，默认值位null。例如：<code>Site site = new Site(&quot;Runoob&quot;)</code>。</p>
 <h3 id="Java常量"><a href="#Java常量" class="headerlink" title="Java常量"></a>Java常量</h3><p>在Java中使用<code>final</code>关键字修饰变量，声明方式为<code>final double PI = 3.14.159</code>。<br>常用名常用小写表示变量，大写表示常量。</p>
 <h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><p><strong>整型、常量、字符型</strong>可以混合运算，不同类型先转化为同一类型，然后进行运算，转换从低级到高级。</p>
-<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><ul>
+<h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><ul>
 <li>类变量：独立于方法之外的变量，用<code>static</code>修饰。</li>
 <li>实例变量：独立于方法之外的变量，<strong>不要</strong><code>static</code>修饰。</li>
-<li>局部变量：类的方法之中的变量。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Variable &#123;</span><br><span class="line">  static  int a = 0;  //类变量</span><br><span class="line">  String str = &quot;hello,world&quot;; 实例变量</span><br><span class="line">  public void method()&#123;</span><br><span class="line">    int i = 1;  //局部变量</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>局部变量：类的方法之中的变量。</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Variable &#123;</span><br><span class="line">  static  int a = 0;  //类变量</span><br><span class="line">  String str = &quot;hello,world&quot;; 实例变量</span><br><span class="line">  public void method()&#123;</span><br><span class="line">    int i = 1;  //局部变量</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><ol>
+<li>for循环</li>
+<li>while循环</li>
+<li>do while循环</li>
+<li>foreach</li>
+</ol>
 
       
     </div>
@@ -608,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java基础语法"><span class="nav-number">1.</span> <span class="nav-text">java基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个Java程序"><span class="nav-number">1.1.</span> <span class="nav-text">第一个Java程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象和类"><span class="nav-number">2.</span> <span class="nav-text">对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问实例变量和方法"><span class="nav-number">2.1.</span> <span class="nav-text">访问实例变量和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">3.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">内置数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型"><span class="nav-number">3.2.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java常量"><span class="nav-number">3.3.</span> <span class="nav-text">Java常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动类型转换"><span class="nav-number">3.4.</span> <span class="nav-text">自动类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">4.</span> <span class="nav-text">变量类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java基础语法"><span class="nav-number">1.</span> <span class="nav-text">java基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个Java程序"><span class="nav-number">1.1.</span> <span class="nav-text">第一个Java程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象和类"><span class="nav-number">2.</span> <span class="nav-text">对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#访问实例变量和方法"><span class="nav-number">2.1.</span> <span class="nav-text">访问实例变量和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">3.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">内置数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型"><span class="nav-number">3.2.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java常量"><span class="nav-number">3.3.</span> <span class="nav-text">Java常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动类型转换"><span class="nav-number">3.4.</span> <span class="nav-text">自动类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量类型"><span class="nav-number">3.5.</span> <span class="nav-text">变量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环"><span class="nav-number">3.6.</span> <span class="nav-text">循环</span></a></li></ol></li></ol></div>
             
 
           </div>
