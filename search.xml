@@ -23,17 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[new-start]]></title>
-    <url>%2F2018%2F11%2F12%2Fnew-start%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[computer-networks]]></title>
     <url>%2F2018%2F11%2F08%2Fcomputer-networks%2F</url>
     <content type="text"><![CDATA[计算机网络计算机网络概述局域网定义：覆盖范围小，自己花钱买设备，带宽固定。交换机 汇聚层 接入层 广域网Internet数据包(TCP/IP协议通信传输中的数据单位) 数据帧(数据链路层的协议数据单元，它包括三部分：帧头，数据部分，帧尾。) ip地址(最终要到的地址) mac地址(决定了吓一跳的地址) osi参考模型应用层：所有能产生网络流量的程序。表示层：在传输之前是否进行加密或者压缩处理。(出现乱码)会话层：查木马(netstat)传输层：可靠传输，流量控制。网络层：选择最佳路径，规划ip地址。数据链路层：帧的开始和结束。透明传输，差错校验。物理层：定义了网络接口的标准，电气标准。 TCP/IP协议应用层传输层(TCP头)：数据段网络层(IP头)：数据包数据链路层(MAC头)：数据帧物理层 物理层解决在连接在各种计算机的传输媒体上传输数据比特流。机械特性，电气特性，功能特性，过程特性。数字信号 =&gt; 调制解调器 =&gt; 模拟信号 =&gt; 调制解调器 =&gt; 数字信号 基本概念：单向通信，双向交替通信，双向同时通信。基带信号：来自信源的信号。带通信号：经过载波调制后的信号 常用的编码方式：比特流，归零制，曼彻斯特，差分曼彻斯特基本带通调制方法：调幅，调频，调相。]]></content>
