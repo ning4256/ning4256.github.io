@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-12-19T11:33:37.959Z</updated>
+  <updated>2019-04-01T09:59:54.021Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>springboot的学习</title>
+    <link href="http://yoursite.com/2019/04/01/springboot/"/>
+    <id>http://yoursite.com/2019/04/01/springboot/</id>
+    <published>2019-04-01T01:26:42.000Z</published>
+    <updated>2019-04-01T09:59:54.021Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="springboot的学习"><a href="#springboot的学习" class="headerlink" title="springboot的学习"></a>springboot的学习</h1><h2 id="SpringBoot简介"><a href="#SpringBoot简介" class="headerlink" title="SpringBoot简介"></a>SpringBoot简介</h2><ul><li>Spring Boot 是由 <strong>Pivotal</strong> 团队提供的全新框架，其设计目的是用来简化Spring 应用项目的搭建以及开发过程</li><li>Spring由于各种XML、Annotation繁琐的配置，使开发变得复杂</li><li>SpringBoot的出现简化了开发Spring应用的开发步骤,开发一个应用不在需要繁琐的配置。</li></ul><h2 id="SpringBoot优点"><a href="#SpringBoot优点" class="headerlink" title="SpringBoot优点"></a>SpringBoot优点</h2><ul><li>Spring Boot遵循“习惯优于配置”的理念，帮助开发者快速搭建Spring框架</li><li>内嵌式容器，无需部署WAR文件</li><li>简化Maven配置</li><li>提供生产就绪型功能，如监控性能指标，健康检查和外部配置</li></ul><h2 id="基于SpringBoot技术项目的开发步骤"><a href="#基于SpringBoot技术项目的开发步骤" class="headerlink" title="基于SpringBoot技术项目的开发步骤"></a>基于SpringBoot技术项目的开发步骤</h2><ul><li><p>继承父启动器： pom.xml</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.1.3.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;relativePath/&gt;</span><br><span class="line">&lt;/parent&gt;</span><br></pre></td></tr></table></figure></li><li><p>开发启动类：</p><ul><li>在启动类上添加注解：<strong>@SpringBootApplication</strong></li><li>运行SpringBoot应用项目，启动内嵌的web容器：<pre><code>**SpringApplication.run(启动类.class, args);**</code></pre></li></ul></li></ul><h2 id="默认约定"><a href="#默认约定" class="headerlink" title="默认约定"></a>默认约定</h2><p> <code>/</code></p><p>  <code>/*</code></p><p>  @Controller在<strong>SpringApplication.run()</strong>方法执行后，Spring Boot发现这是一个Web应用（根据类路径上的依赖确定），于是在内嵌的Tomcat容器中启动了一个Spring的应用上下文，并且监听默认的tcp端口8080（默认约定）。同时在Spring Context中根据默认的约定配置了Spring Web Mvc<br>  容器默认的Context路径是/<br>    DispatherServlet匹配的路径(servlet-mapping中的url-patterns)是<code>/*</code>@ComponentScan路径被默认设置为启动类的同名package及其子包，也就是该package下的所有<code>@Controller</code>，<code>@Service</code>, <code>@Component</code>, <code>@Repository</code>都会被实例化后并加入Spring Context中。</p><h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><p>  <strong>server.port</strong>:定义端口号   默认是8080</p><p>  <strong>server.servlet.context-path</strong>: 应用上下文路径,默认 /</p><p>  <strong>spring.thymeleaf.cache=false</strong> : 对thyemleaf模板页面不缓存</p><p>  <strong>spring.mvc.date-format=yyyy-MM-dd</strong>   设置提交数据日期格式的处理</p><p>  <strong>spring.jackson.date-format=yyyy-MM-dd hh:mm:ss</strong>  json格式日期数据的处理</p><p>  <strong>spring.jackson.time-zone=GMT+8</strong>  时区</p><p>  <strong>spring.http.encoding.charset=UTF-8</strong> 字符编码</p><h2 id="SpringBoot-配置文件"><a href="#SpringBoot-配置文件" class="headerlink" title="SpringBoot 配置文件"></a>SpringBoot 配置文件</h2><pre><code>Spring boot 支持两种格式的配置文件属性文件:applicaiton.propertiesyaml文件:application.yml</code></pre><h2 id="多环境配置文件的切换"><a href="#多环境配置文件的切换" class="headerlink" title="多环境配置文件的切换"></a>多环境配置文件的切换</h2><h3 id="环境文件的命名格式"><a href="#环境文件的命名格式" class="headerlink" title="环境文件的命名格式"></a>环境文件的命名格式</h3><ul><li>applicaion-{env}.yml</li><li>applicaion-{env}.properties</li></ul><h3 id="如果使用不同的环境文件"><a href="#如果使用不同的环境文件" class="headerlink" title="如果使用不同的环境文件"></a>如果使用不同的环境文件</h3><p>  application.yml进行配置：</p><ul><li>spring:<ul><li>profiles:<ul><li>active: env</li></ul></li></ul></li></ul><h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><h3 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h3><ul><li>编写自定义配置文件</li><li>在启动类上添加注解，在项目启动的过程中来加载自定义配置文件：<pre><code>@PropertyResource(value=&quot;路径&quot;)</code></pre></li><li>在项目中通过@Value注解来注入对应的数据。</li></ul><h3 id="ConfigurationProperties"><a href="#ConfigurationProperties" class="headerlink" title="@ConfigurationProperties"></a>@ConfigurationProperties</h3><p>  可以将配置文件中的数据，注入到某一个配置类中，注入给对应的属性。</p><ul><li>编写自定义配置文件</li><li>在启动类上添加注解，在项目启动的过程中来加载自定义配置文件：<pre><code>**@PropertyResource(value=&quot;路径&quot;)**</code></pre></li><li>在配置类上添加注解：<pre><code>**@ConfigurationProperties(prefix=&quot;&quot;)**</code></pre></li></ul><h2 id="SpringBoot整合Mybatis"><a href="#SpringBoot整合Mybatis" class="headerlink" title="SpringBoot整合Mybatis"></a>SpringBoot整合Mybatis</h2><h3 id="pom中配置启动器"><a href="#pom中配置启动器" class="headerlink" title="pom中配置启动器"></a>pom中配置启动器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><h3 id="配置数据源"><a href="#配置数据源" class="headerlink" title="配置数据源"></a>配置数据源</h3><h3 id="逆向工程"><a href="#逆向工程" class="headerlink" title="逆向工程"></a>逆向工程</h3><p>Mybatis Generator</p><h3 id="在启动类中添加注解"><a href="#在启动类中添加注解" class="headerlink" title="在启动类中添加注解"></a>在启动类中添加注解</h3><p>  <em>@MapperScanner(value={“接口包”})</em></p><h3 id="加载mybatis-sql映射文件"><a href="#加载mybatis-sql映射文件" class="headerlink" title="加载mybatis sql映射文件"></a>加载mybatis sql映射文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:/mapper/*.xml</span><br></pre></td></tr></table></figure><h2 id="SpringBoot单元测试："><a href="#SpringBoot单元测试：" class="headerlink" title="SpringBoot单元测试："></a>SpringBoot单元测试：</h2><p>  @RunWith(SpringRunner.class)</p><p>  @SpringBootTest</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;springboot的学习&quot;&gt;&lt;a href=&quot;#springboot的学习&quot; class=&quot;headerlink&quot; title=&quot;springboot的学习&quot;&gt;&lt;/a&gt;springboot的学习&lt;/h1&gt;&lt;h2 id=&quot;SpringBoot简介&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="java" scheme="http://yoursite.com/categories/java/"/>
+    
+    
+      <category term="springboot" scheme="http://yoursite.com/tags/springboot/"/>
+    
+  </entry>
   
   <entry>
     <title>leet-code</title>

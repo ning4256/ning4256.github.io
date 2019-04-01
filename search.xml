@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[springboot的学习]]></title>
+    <url>%2F2019%2F04%2F01%2Fspringboot%2F</url>
+    <content type="text"><![CDATA[springboot的学习SpringBoot简介 Spring Boot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化Spring 应用项目的搭建以及开发过程 Spring由于各种XML、Annotation繁琐的配置，使开发变得复杂 SpringBoot的出现简化了开发Spring应用的开发步骤,开发一个应用不在需要繁琐的配置。 SpringBoot优点 Spring Boot遵循“习惯优于配置”的理念，帮助开发者快速搭建Spring框架 内嵌式容器，无需部署WAR文件 简化Maven配置 提供生产就绪型功能，如监控性能指标，健康检查和外部配置 基于SpringBoot技术项目的开发步骤 继承父启动器： pom.xml 123456&lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.1.3.RELEASE&lt;/version&gt; &lt;relativePath/&gt;&lt;/parent&gt; 开发启动类： 在启动类上添加注解：@SpringBootApplication 运行SpringBoot应用项目，启动内嵌的web容器：**SpringApplication.run(启动类.class, args);** 默认约定 / /* @Controller在SpringApplication.run()方法执行后，Spring Boot发现这是一个Web应用（根据类路径上的依赖确定），于是在内嵌的Tomcat容器中启动了一个Spring的应用上下文，并且监听默认的tcp端口8080（默认约定）。同时在Spring Context中根据默认的约定配置了Spring Web Mvc 容器默认的Context路径是/ DispatherServlet匹配的路径(servlet-mapping中的url-patterns)是/*@ComponentScan路径被默认设置为启动类的同名package及其子包，也就是该package下的所有@Controller，@Service, @Component, @Repository都会被实例化后并加入Spring Context中。 常用配置 server.port:定义端口号 默认是8080 server.servlet.context-path: 应用上下文路径,默认 / spring.thymeleaf.cache=false : 对thyemleaf模板页面不缓存 spring.mvc.date-format=yyyy-MM-dd 设置提交数据日期格式的处理 spring.jackson.date-format=yyyy-MM-dd hh:mm:ss json格式日期数据的处理 spring.jackson.time-zone=GMT+8 时区 spring.http.encoding.charset=UTF-8 字符编码 SpringBoot 配置文件Spring boot 支持两种格式的配置文件 属性文件:applicaiton.properties yaml文件:application.yml 多环境配置文件的切换环境文件的命名格式 applicaion-{env}.yml applicaion-{env}.properties 如果使用不同的环境文件 application.yml进行配置： spring: profiles: active: env 自定义配置@Value 编写自定义配置文件 在启动类上添加注解，在项目启动的过程中来加载自定义配置文件：@PropertyResource(value=&quot;路径&quot;) 在项目中通过@Value注解来注入对应的数据。 @ConfigurationProperties 可以将配置文件中的数据，注入到某一个配置类中，注入给对应的属性。 编写自定义配置文件 在启动类上添加注解，在项目启动的过程中来加载自定义配置文件：**@PropertyResource(value=&quot;路径&quot;)** 在配置类上添加注解：**@ConfigurationProperties(prefix=&quot;&quot;)** SpringBoot整合Mybatispom中配置启动器12345&lt;dependency&gt; &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt; &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt; &lt;version&gt;2.0.0&lt;/version&gt;&lt;/dependency&gt; 配置数据源逆向工程Mybatis Generator 在启动类中添加注解 @MapperScanner(value={“接口包”}) 加载mybatis sql映射文件12mybatis: mapper-locations: classpath:/mapper/*.xml SpringBoot单元测试： @RunWith(SpringRunner.class) @SpringBootTest]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leet-code]]></title>
     <url>%2F2018%2F11%2F15%2Fleet-code%2F</url>
     <content type="text"><![CDATA[9. 回文数判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。 示例 1:12输入: 121输出: true 示例 2:123输入: -121输出: false解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。 示例 3:123输入: 10输出: false解释: 从右向左读, 为 01 。因此它不是一个回文数。 进阶:你能不将整数转为字符串来解决这个问题吗？ Java实现代码123456789101112131415class Solution &#123; public boolean isPalindrome(int x) &#123; // 排除x为负数，整十数(0对十取余也是0) if(x &lt; 0 || (x % 10 ==0 &amp;&amp; x != 0) )&#123; return false; &#125; // x为正整数的时候 int env = 0; while(x &gt; env) &#123; env = env * 10 + x % 10; x = x / 10; &#125; return (x == env || x == env / 10); &#125;&#125;]]></content>
